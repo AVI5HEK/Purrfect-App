@@ -2,12 +2,16 @@ package com.avi5hek.purrfectapp.ui
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import javax.inject.Inject
 import javax.inject.Provider
+import javax.inject.Singleton
 
 /**
  * Created by "Avishek" on 8/22/2019.
  */
+@Singleton
 class ViewModelFactory
+@Inject
 constructor(
   private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) :

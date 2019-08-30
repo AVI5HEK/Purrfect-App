@@ -1,6 +1,7 @@
 package com.avi5hek.purrfectapp
 
 import android.app.Application
+import com.avi5hek.purrfectapp.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -19,6 +20,7 @@ class PurrfectApp : Application(), HasAndroidInjector {
   }
 
   override fun onCreate() {
+    DaggerAppComponent.create().inject(this)
     super.onCreate()
   }
 }

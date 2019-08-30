@@ -9,13 +9,17 @@ import android.view.View
 import com.avi5hek.purrfectapp.R
 import com.avi5hek.purrfectapp.model.Cat
 import com.avi5hek.purrfectapp.model.Status
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+  @Inject
   lateinit var mainViewModel: MainViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     mainViewModel.catsLiveData.observe(

@@ -14,13 +14,17 @@ import android.view.WindowManager
 import com.avi5hek.purrfectapp.R
 import com.avi5hek.purrfectapp.model.Status
 import com.avi5hek.purrfectapp.util.GlideApp
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_cat.*
+import javax.inject.Inject
 
 class CatFragment : AppCompatDialogFragment() {
 
+  @Inject
   lateinit var mainViewModel: MainViewModel
 
   override fun onAttach(context: Context?) {
+    AndroidSupportInjection.inject(this)
     super.onAttach(context)
   }
 

@@ -1,7 +1,7 @@
 package com.avi5hek.purrfectapp.di
 
 import com.avi5hek.purrfectapp.PurrfectApp
-import com.avi5hek.purrfectapp.di.module.ActivityBindingModule
+import com.avi5hek.purrfectapp.di.module.*
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -12,7 +12,11 @@ import dagger.android.support.AndroidSupportInjectionModule
 @Component(
   modules = [
     AndroidSupportInjectionModule::class,
-    ActivityBindingModule::class
+    ActivityBindingModule::class,
+    CatModule::class,
+    NetworkModule::class,
+    AppModule::class,
+    MainFragmentBindingModule::class
   ]
 )
 interface AppComponent : AndroidInjector<PurrfectApp>

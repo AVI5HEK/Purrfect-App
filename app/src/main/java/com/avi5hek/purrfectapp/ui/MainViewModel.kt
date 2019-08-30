@@ -8,11 +8,13 @@ import com.avi5hek.purrfectapp.model.Resource
 import com.avi5hek.purrfectapp.repository.CatRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 /**
  * Created by "Avishek" on 8/19/2019.
  */
 class MainViewModel
+@Inject
 constructor(private val catRepository: CatRepository) : BaseViewModel() {
 
   val catsLiveData = MutableLiveData<Resource<List<Cat>>>()

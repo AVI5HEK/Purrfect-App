@@ -10,10 +10,20 @@ import com.avi5hek.purrfectapp.R
 import com.avi5hek.purrfectapp.model.Cat
 import com.avi5hek.purrfectapp.model.Status
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HasAndroidInjector {
+
+  @Inject
+  lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+
+  override fun androidInjector(): AndroidInjector<Any> {
+    return dispatchingAndroidInjector
+  }
 
   @Inject
   lateinit var mainViewModel: MainViewModel

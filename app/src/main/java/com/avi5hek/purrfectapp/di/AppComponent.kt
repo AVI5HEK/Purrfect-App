@@ -15,8 +15,7 @@ import dagger.android.support.AndroidSupportInjectionModule
     ActivityBindingModule::class,
     CatModule::class,
     NetworkModule::class,
-    AppModule::class,
-    MainFragmentBindingModule::class
+    AppModule::class
   ]
 )
 interface AppComponent : AndroidInjector<PurrfectApp>

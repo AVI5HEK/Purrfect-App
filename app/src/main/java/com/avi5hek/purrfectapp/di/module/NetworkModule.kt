@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 /**
  * Created by "Avishek" on 8/19/2019.
@@ -59,6 +60,7 @@ class NetworkModule {
     return httpClient.build()
   }
 
+  @Singleton
   @Provides
   fun provideRetrofit(httpClient: OkHttpClient, schedulerProvider: SchedulerProvider): Retrofit {
 

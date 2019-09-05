@@ -1,5 +1,6 @@
 package com.avi5hek.purrfectapp.di.module
 
+import com.avi5hek.purrfectapp.di.scope.ActivityScope
 import com.avi5hek.purrfectapp.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -10,6 +11,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBindingModule {
 
+  @ActivityScope
   @ContributesAndroidInjector
   abstract fun contributeMainActivity(): MainActivity
 }

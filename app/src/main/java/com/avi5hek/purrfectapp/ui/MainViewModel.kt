@@ -3,7 +3,6 @@ package com.avi5hek.purrfectapp.ui
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import com.avi5hek.purrfectapp.base.BaseViewModel
-import com.avi5hek.purrfectapp.di.scope.ActivityScope
 import com.avi5hek.purrfectapp.model.Cat
 import com.avi5hek.purrfectapp.model.Resource
 import com.avi5hek.purrfectapp.repository.CatRepository
@@ -14,7 +13,6 @@ import javax.inject.Inject
 /**
  * Created by "Avishek" on 8/19/2019.
  */
-@ActivityScope
 class MainViewModel
 @Inject
 constructor(private val catRepository: CatRepository) : BaseViewModel() {

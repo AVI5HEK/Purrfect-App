@@ -3,6 +3,8 @@ package com.avi5hek.purrfectapp.ui
 
 import android.app.Dialog
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
@@ -21,7 +23,7 @@ import javax.inject.Inject
 class CatFragment : AppCompatDialogFragment() {
 
   @Inject
-  lateinit var mainViewModel: MainViewModel
+  lateinit var viewModelFactory: ViewModelProvider.Factory
 
   override fun onAttach(context: Context?) {
     AndroidSupportInjection.inject(this)
@@ -37,30 +39,33 @@ class CatFragment : AppCompatDialogFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    mainViewModel.catLiveData.observe(
-      this, Observer { cat ->
-        cat?.apply {
-          when (status) {
-            Status.LOADING -> {
-              progress_bar.visibility = View.VISIBLE
-            }
-            Status.SUCCESS -> {
-              progress_bar.visibility = View.GONE
-              data?.url?.apply {
-                GlideApp.with(image_cat_preview.context)
-                  .load(this)
-                  .into(image_cat_preview)
+    activity?.also {
+      val mainViewModel = ViewModelProviders.of(it, viewModelFactory)[MainViewModel::class.java]
+      mainViewModel.catLiveData.observe(
+        this, Observer { cat ->
+          cat?.apply {
+            when (status) {
+              Status.LOADING -> {
+                progress_bar.visibility = View.VISIBLE
+              }
+              Status.SUCCESS -> {
+                progress_bar.visibility = View.GONE
+                data?.url?.apply {
+                  GlideApp.with(image_cat_preview.context)
+                    .load(this)
+                    .into(image_cat_preview)
+                }
+              }
+              Status.ERROR -> {
+                progress_bar.visibility = View.GONE
               }
             }
-            Status.ERROR -> {
-              progress_bar.visibility = View.GONE
-            }
           }
+        })
+      arguments?.apply {
+        getString(BUNDLE_KEY_ID)?.apply {
+          mainViewModel.getCatImage(this)
         }
-      })
-    arguments?.apply {
-      getString(BUNDLE_KEY_ID)?.apply {
-        mainViewModel.getCatImage(this)
       }
     }
   }

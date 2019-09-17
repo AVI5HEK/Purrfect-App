@@ -18,7 +18,8 @@ import javax.inject.Singleton
     CatModule::class,
     NetworkModule::class,
     AppModule::class,
-    ViewModelModule::class
+    ViewModelModule::class,
+    FragmentBindingModule::class
   ]
 )
 interface AppComponent : AndroidInjector<PurrfectApp>

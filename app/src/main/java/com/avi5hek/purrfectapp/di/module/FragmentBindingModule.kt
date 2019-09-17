@@ -8,7 +8,7 @@ import dagger.android.ContributesAndroidInjector
  * Created by "Avishek" on 8/20/2019.
  */
 @Module
-abstract class MainFragmentBindingModule {
+abstract class FragmentBindingModule {
 
   @ContributesAndroidInjector
   abstract fun contributeCatFragment(): CatFragment
